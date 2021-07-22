@@ -15,14 +15,14 @@ def fix_bad_url(_site_name, _url):
     http_type = _url.split(':')[0]
     if _site_name:
         formatted_site_name = _site_name.replace("'", '').replace(' ', '').lower()
-        formatted_site_name = fix_edgecase_site_names(formatted_site_name)
+        formatted_site_name = fix_edgecase_site_name(formatted_site_name)
     else:
         formatted_site_name = ''
     fixed_url = f'{http_type}://www.{formatted_site_name}.com'
     return fixed_url
 
 
-def fix_edgecase_site_names(_site_name):
+def fix_edgecase_site_name(_site_name):
     if _site_name.lower() in site_name_to_proper_url_name:
         _site_name = site_name_to_proper_url_name[_site_name]
     return _site_name
